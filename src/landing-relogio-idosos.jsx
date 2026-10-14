@@ -185,32 +185,9 @@ function Hero() {
 
         {/* Watch mockup */}
         <div className="relative flex-shrink-0">
-          <div className="w-52 h-64 rounded-[50px] bg-gradient-to-br from-[#2a2a3e] to-[#1a1a2e] shadow-[0_30px_80px_rgba(0,0,0,0.5)] border-2 border-white/8 flex flex-col items-center justify-center relative">
-            {/* tela */}
-            <div className="w-40 h-48 rounded-[36px] bg-gradient-to-br from-[#0d1b2a] to-blue-deep flex flex-col items-center justify-around px-3 py-4">
-              <span className="text-white/50 text-[10px] font-medium">BOM DIA, DONA MARIA</span>
-              <div className="text-center">
-                <div className="text-white text-4xl font-black leading-none">08:42</div>
-                <div className="text-white/40 text-[10px] mt-0.5">Seg, 09 Jun</div>
-              </div>
-              <div className="grid grid-cols-2 gap-1.5 w-full">
-                {[["❤️","76 bpm"],["🩸","98% SpO₂"],["👣","3.2k passos"],["😴","7h sono"]].map(([e,v]) => (
-                  <div key={v} className="bg-white/6 rounded-xl p-1.5 text-center">
-                    <div className="text-sm">{e}</div>
-                    <div className="text-white/70 text-[9px] mt-0.5">{v}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-orange-alert/20 border border-orange-alert/40 rounded-lg px-3 py-1 text-orange-alert text-[9px] font-bold">
-                ⚠️ Imagem meramente ilustrativa
-              </div>
-            </div>
-            {/* Botão SOS lateral */}
-            <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-4 h-12 rounded-md bg-orange-alert shadow-[0_0_12px_rgba(245,130,77,0.6)]" />
+          <div className="w-full h-56 sm:h-72 md:80 rounded-[50px] flex flex-col items-center justify-center relative">
+              <img src="relogio-apenas.png" className="w-full h-full object-contain" />
           </div>
-          {/* Ondas */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-72 rounded-[56px] border-2 border-green-vita/15 animate-ripple pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-80 rounded-[60px] border border-green-vita/8 animate-ripple-delay pointer-events-none" />
         </div>
       </div>
     </section>
@@ -434,11 +411,11 @@ function ProtectionSection() {
 // ── IA ────────────────────────────────────────────────────────────────
 const AI_FEATURES = [
   { icon: icons.fall,     iconClass:"text-red-500",       bgClass:"bg-red-500/10",       title:"Prevenção de Quedas",         desc:"A IA detecta padrões de movimento que antecedem quedas e envia alertas preventivos antes que o acidente aconteça.", badge:true },
-  { icon: icons.activity, iconClass:"text-blue-mid",      bgClass:"bg-blue-mid/10",      title:"Análise de Comportamento",    desc:"Detecta mudanças sutis na rotina — como redução de movimentos ou alterações no sono — que podem indicar problemas de saúde." },
+  { icon: icons.lock,     iconClass:"text-yellow-500",    bgClass:"bg-yellow-500/10",    title:"Proteção Inteligente",        desc:"Explica mensagens suspeitas recebidas pelo idoso e avisa em linguagem simples sobre possíveis tentativas de golpe.", badge:true },
+  { icon: icons.activity, iconClass:"text-blue-mid",      bgClass:"bg-blue-mid/10",      title:"Análise de Comportamento",    desc:"Detecta mudanças sutis na rotina, como redução de movimentos ou alterações no sono, que podem indicar problemas de saúde." },
   { icon: icons.heart,    iconClass:"text-green-vita",    bgClass:"bg-green-vita/10",    title:"Sinais Vitais Inteligentes",  desc:"Analisa padrões de batimento cardíaco ao longo do tempo e sugere buscar atendimento médico quando necessário." },
-  { icon: icons.zap,      iconClass:"text-orange-alert",  bgClass:"bg-orange-alert/10",  title:"Assistente de Voz",           desc:"Lembra remédios, consultas e compromissos por voz, de forma clara e amigável — sem precisar digitar nada." },
-  { icon: icons.warning,  iconClass:"text-purple-500",    bgClass:"bg-purple-500/10",    title:"Risco de Sedentarismo",       desc:"Identifica períodos longos de inatividade e incentiva o idoso a se movimentar com mensagens amigáveis." },
-  { icon: icons.lock,     iconClass:"text-yellow-500",    bgClass:"bg-yellow-500/10",    title:"Proteção Inteligente",        desc:"Explica mensagens suspeitas recebidas pelo idoso e avisa em linguagem simples sobre possíveis tentativas de golpe." },
+  { icon: icons.zap,      iconClass:"text-orange-alert",  bgClass:"bg-orange-alert/10",  title:"Lembrete digital",           desc:"Lembra remédios, consultas e compromissos, de forma clara e amigável." },
+  { icon: icons.warning,  iconClass:"text-purple-500",    bgClass:"bg-purple-500/10",    title:"Risco de Sedentarismo",       desc:"Identifica períodos longos de inatividade e incentiva o idoso a se movimentar com mensagens amigáveis." }
 ];
 
 function AISection() {
@@ -482,22 +459,155 @@ function AISection() {
   );
 }
 
+// ── App Showcase ──────────────────────────────────────────────────────
+const APP_TABS = [
+  {
+    id: "saude",
+    label: "Saúde & Bem-estar",
+    img: "app-saude.png",
+    color: "text-blue-mid",
+    activeBg: "bg-blue-mid",
+    icon: icons.heart,
+    iconClass: "text-blue-mid",
+    bgClass: "bg-blue-mid/10",
+    title: "Saúde na palma da mão",
+    desc: "O app do idoso exibe de forma simples e clara todos os dados do relógio: frequência cardíaca, sono, passos e pressão arterial. Tudo pensado para ser fácil de ler e entender.",
+    features: [
+      "Frequência cardíaca em tempo real",
+      "Monitoramento do sono com eficiência",
+      "Agenda de medicamentos com alertas",
+      "Histórico de saúde e exames",
+    ],
+  },
+  {
+    id: "emergencia",
+    label: "Emergência & SOS",
+    img: "app-emergencia.png",
+    color: "text-red-500",
+    activeBg: "bg-red-500",
+    icon: icons.sos,
+    iconClass: "text-red-500",
+    bgClass: "bg-red-500/10",
+    title: "Segurança a um toque",
+    desc: "O botão SOS envia localização e aciona contatos de emergência automaticamente. A detecção de quedas por IA funciona 24h e notifica a família em segundos.",
+    features: [
+      "Proteção contra golpes digitais",
+      "Detecção automática de quedas com IA",
+      "Contatos de emergência com um toque",
+      "Compartilhamento de localização em tempo real",
+    ],
+  },
+];
+
+function AppShowcase() {
+  const [active, setActive] = useState("saude");
+  const tab = APP_TABS.find(t => t.id === active);
+
+  return (
+    <section id="app" className="bg-white py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+
+        {/* Cabeçalho */}
+        <FadeIn className="text-center mb-12">
+          <span className="text-blue-mid font-bold text-xs tracking-widest uppercase">
+            Aplicativo Amparo
+          </span>
+          <h2 className="text-navy font-black mt-3 tracking-tight"
+            style={{ fontSize: "clamp(28px,4vw,44px)" }}>
+            Um app pensado para{" "}
+            <span className="text-blue-mid">quem importa.</span>
+          </h2>
+          <p className="text-slate-500 text-base max-w-xl mx-auto mt-4 leading-relaxed">
+            Interface simples, letras grandes e ícones claros — projetado para idosos usarem com autonomia e para famílias acompanharem com tranquilidade.
+          </p>
+        </FadeIn>
+
+        {/* Tabs */}
+        <FadeIn className="flex justify-center gap-3 mb-12 flex-wrap">
+          {APP_TABS.map(t => (
+            <button key={t.id} onClick={() => setActive(t.id)}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
+                active === t.id
+                  ? `${t.activeBg} text-white border-transparent shadow-md`
+                  : "bg-white text-slate-500 border-slate-200 hover:border-slate-300"
+              }`}>
+              <Icon path={t.icon} size={15} className={active === t.id ? "text-white" : t.iconClass} />
+              {t.label}
+            </button>
+          ))}
+        </FadeIn>
+
+        {/* Conteúdo */}
+        <div className="flex flex-wrap items-center justify-center gap-14">
+
+          {/* Mockup do celular */}
+          <FadeIn className="flex-shrink-0">
+            <div className="relative">
+              {/* Brilho atrás */}
+              <div className={`absolute inset-0 rounded-[40px] blur-2xl opacity-20 scale-95 ${
+                active === "saude" ? "bg-blue-mid" : "bg-red-500"
+              } transition-colors duration-500`} />
+              {/* Frame do celular */}
+              <div className="relative w-56 rounded-[40px] bg-[#0d0d0d] p-2 shadow-[0_30px_80px_rgba(0,0,0,0.35)] border border-white/10">
+                {/* Tela */}
+                <div className="rounded-[32px] overflow-hidden bg-white" style={{ height: 480 }}>
+                  <img
+                    key={tab.id}
+                    src={tab.img}
+                    alt={tab.label}
+                    className="w-full h-full object-cover object-top transition-opacity duration-300"
+                  />
+                </div>
+                {/* Botão home */}
+                <div className="w-24 h-1 bg-white/30 rounded-full mx-auto mt-2" />
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Texto e features */}
+          <FadeIn delay={120} className="flex-1 min-w-[260px] max-w-md">
+            <div className={`w-12 h-12 rounded-xl ${tab.bgClass} flex items-center justify-center mb-5`}>
+              <Icon path={tab.icon} size={24} className={tab.iconClass} />
+            </div>
+            <h3 className="text-navy font-extrabold text-2xl mb-3 tracking-tight">{tab.title}</h3>
+            <p className="text-slate-500 text-base leading-relaxed mb-7">{tab.desc}</p>
+            <ul className="flex flex-col gap-3">
+              {tab.features.map(f => (
+                <li key={f} className="flex items-start gap-3">
+                  <div className={`w-5 h-5 rounded-full ${tab.bgClass} flex items-center justify-center shrink-0 mt-0.5`}>
+                    <Icon path={icons.check} size={11} className={tab.iconClass} />
+                  </div>
+                  <span className="text-slate-600 text-sm leading-snug">{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Badges */}
+            <div className="flex gap-3 mt-8 flex-wrap">
+              {["iOS","Android"].map(os => (
+                <div key={os} className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5">
+                  <span className="text-slate-400 text-lg">{os === "iOS" ? "🍎" : "🤖"}</span>
+                  <div>
+                    <div className="text-[10px] text-slate-400 leading-none">Disponível no</div>
+                    <div className="text-navy font-bold text-sm">{os === "iOS" ? "App Store" : "Google Play"}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 // ── Planos ────────────────────────────────────────────────────────────
 const PLANS = [
   {
-    name:"Família",      price:"Acessível",     tag:null,          accent:"border-blue-mid",   btnClass:"bg-blue-mid text-white",
-    desc:"Ideal para famílias que querem monitorar um ente querido.",
-    items:["Relógio + App do Idoso","App dos Familiares (até 5)","Alertas de saúde e queda","Localização em tempo real","Proteção anti-golpes básica"],
-  },
-  {
-    name:"Cuidado Plus", price:"Plano Premium", tag:"Mais Popular", accent:"border-green-vita", btnClass:"bg-green-vita text-navy",
-    desc:"Para quem quer o máximo de proteção e suporte contínuo.",
-    items:["Tudo do plano Família","IA de prevenção de quedas","Análise comportamental avançada","Suporte 24h","Relatórios médicos semanais","Assistente de voz inteligente"],
-  },
-  {
-    name:"Institucional", price:"Sob consulta", tag:null,          accent:"border-orange-alert", btnClass:"bg-orange-alert text-white",
-    desc:"Para clínicas, hospitais, asilos e ONGs que cuidam de muitos.",
-    items:["Gestão de múltiplos usuários","Dashboard institucional","API para integração hospitalar","Treinamento da equipe","SLA garantido","Suporte dedicado"],
+    name:"Cuidado Plus", price:"Plano Cuidado", tag:"Mais Popular", accent:"border-green-vita", btnClass:"bg-green-vita text-navy",
+    desc:"Para quem quer proteger e monitorar um ente querido.",
+    items:["Relógio + App de monitoramento","IA de prevenção de quedas","Proteção anti-golpes básica","App dos Familiares","Relatórios médicos semanais","Localização em tempo real"],
   },
 ];
 
@@ -506,18 +616,18 @@ function PlansSection() {
     <section id="plans" className="bg-blue-deep py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <FadeIn className="text-center mb-16">
-          <span className="text-blue-mid font-bold text-xs tracking-widest uppercase">Seja nosso parceiro</span>
+          <span className="text-blue-mid font-bold text-xs tracking-widest uppercase">Acompanhe quem você ama</span>
           <h2 className="text-white font-black mt-3 tracking-tight"
             style={{ fontSize: "clamp(28px,4vw,44px)" }}>
             O plano certo para{" "}
-            <span className="text-green-vita">cada necessidade.</span>
+            <span className="text-green-vita">você.</span>
           </h2>
           <p className="text-white/60 text-base mt-3">
-            Procuramos parceiros que compartilhem da nossa missão de cuidar melhor.
+            Cuide melhor de quem você ama com um plano perfeito para você.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <div className="flex flex-wrap gap-6 justify-center">
           {PLANS.map((p, i) => (
             <FadeIn key={p.name} delay={i * 120} className="relative">
               {p.tag && (
@@ -534,7 +644,7 @@ function PlansSection() {
                 <p className={`text-sm leading-relaxed mb-6 ${p.tag ? "text-slate-500" : "text-white/60"}`}>{p.desc}</p>
                 <ul className="flex flex-col gap-3 mb-8 flex-1">
                   {p.items.map(item => (
-                    <li key={item} className="flex items-start gap-2.5">
+                    <li key={item} className="flex items-center gap-2.5">
                       <Icon path={icons.check} size={14} className={p.btnClass.split(" ")[0].replace("bg-","text-")} />
                       <span className={`text-sm leading-snug ${p.tag ? "text-slate-600" : "text-white/75"}`}>{item}</span>
                     </li>
@@ -542,7 +652,7 @@ function PlansSection() {
                 </ul>
                 <a href="#contact"
                   className={`block text-center ${p.btnClass} font-bold text-sm py-3.5 rounded-xl hover:opacity-90 transition-opacity`}>
-                  {p.name === "Institucional" ? "Falar com especialista" : "Quero este plano"}
+                  {p.name === "Institucional" ? "Falar com especialista" : "Quero o plano"}
                 </a>
               </div>
             </FadeIn>
@@ -609,6 +719,7 @@ export default function App() {
       <HowItWorks />
       <ProtectionSection />
       <AISection />
+      <AppShowcase />
       <PlansSection />
       <Footer />
     </div>
